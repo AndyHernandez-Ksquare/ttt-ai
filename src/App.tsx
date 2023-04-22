@@ -29,9 +29,10 @@ function App() {
     <section className="App">
       <h1>Tik Tak Toe</h1>
       <section className="chip-select">
-        <p className={`select-chip ${!gameStarted && "not-started"}`}>
+        <p className={`select-chip ${!gameStarted && "warning"}`}>
           Select your chip:
         </p>
+        {/* Generate two buttons using a map */}
         {["X", "O"].map((chip) => (
           <button
             className="chip-button"
@@ -49,7 +50,10 @@ function App() {
         board={board}
         handleTileClick={handleTileClick}
       />
-      {gameStarted && <p>Cannot change chip once the game has started!</p>}
+      {/* If the game has started show this message */}
+      {gameStarted && (
+        <p className="warning">Cannot change chip once the game has started!</p>
+      )}
 
       <ShowWinner winner={winner} isDraw={draw} resetGame={resetGame} />
     </section>

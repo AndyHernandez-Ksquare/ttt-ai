@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  height: 100vh;
+  height: 40vh;
 }
 html {
   background-color: black;
@@ -28,6 +28,8 @@ button {
   font-size: 1.5rem;
 }
 
-.not-started {
+.warning {
   color: yellow;
+  font-size: 1.3rem;
+  font-weight: 600;
 }

@@ -5,7 +5,7 @@ import calculateWinner from "../utils/calculateWinner";
 // import xSound from "";
 const useTikTakToe = () => {
   const [playerChip, setPlayerChip] = useState("");
-  const [board, setBoard] = useState<TileValue[]>(Array(9).fill(null));
+  const [board, setBoard] = useState<TileValue[]>(Array(9).fill(null)); //To store the current state of the board
   const [isPlayerTurn, setIsPlayerTurn] = useState<boolean>(true);
   const [winner, setWinner] = useState<TileValue | null>(null);
   const [draw, setDraw] = useState<boolean>(false);
@@ -32,6 +32,7 @@ const useTikTakToe = () => {
     setGameStarted(false);
   };
 
+  // UseEffect hook to check for game state changes after every update of board, isPlayerTurn, playerChip or winner
   useEffect(() => {
     const winner = calculateWinner(board);
     if (winner) {
@@ -41,7 +42,9 @@ const useTikTakToe = () => {
       // Game is a draw
       setDraw(true);
       setIsPlayerTurn(false);
-    } else if (!isPlayerTurn) {
+    }
+    // If it's not the player's turn, CPU makes a move
+    else if (!isPlayerTurn) {
       makeCPUMove(board, playerChip, setBoard, setIsPlayerTurn);
     }
   }, [board, isPlayerTurn, playerChip, winner]);
