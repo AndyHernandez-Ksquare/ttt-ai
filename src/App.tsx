@@ -32,8 +32,9 @@ function App() {
         <p className={`select-chip ${!gameStarted && "not-started"}`}>
           Select your chip:
         </p>
-        {["X", "O"].map((chip) => (
+        {["X", "O"].map((chip, index) => (
           <button
+            key={index}
             className="chip-button"
             onClick={() => {
               handleChipSelect(`${chip}`);
